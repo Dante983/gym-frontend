@@ -1,9 +1,7 @@
-// Dashboard.js
 import React from 'react';
 import './Dashboard.css';
 
 const Dashboard = () => {
-    // These would typically come from your app's state, possibly using useState or useContext
     const workoutsCompleted = 10;
     const totalExerciseTime = 5; // in hours
     const currentWeight = 70; // in kg

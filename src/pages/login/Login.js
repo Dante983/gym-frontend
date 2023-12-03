@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedIn, setUserRole }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const response = await fetch('http://localhost:3001/api/login', {
       method: 'POST',
       headers: {
@@ -17,13 +17,14 @@ const Login = ({ setLoggedIn }) => {
       },
       body: JSON.stringify({ email, password }),
     });
-
+  
     const data = await response.json();
-
+  
     if (response.ok) {
       setLoggedIn(true);
-
-      if (data.role === 'admin') {
+      setUserRole(data.isAdmin === 1 ? 'admin' : 'user');
+  
+      if (data.isAdmin === 1) {
         navigate('/admin-dashboard');
       } else {
         navigate('/user-dashboard');

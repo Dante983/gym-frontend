@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ isLoggedIn, setLoggedIn }) => {
+const Navbar = ({ isLoggedIn, setLoggedIn, userRole }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,10 +11,10 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
     // Redirect to login page
     navigate('/login');
   };
-
-  const handleLogin = () => {
-    if (!isLoggedIn) {
-      navigate('/login');
+console.log(userRole);
+  const handleDashboard = () => {
+    if (userRole === 'admin') {
+      navigate('/admin-dashboard');
     } else {
       navigate('/user-dashboard');
     }
@@ -26,7 +26,8 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
-        <li><Link to="/" onClick={handleLogin}>{isLoggedIn ? 'Dashboard' : 'Login'}</Link></li>
+        <li><a href="/" onClick={(e) => { e.preventDefault(); isLoggedIn ? handleDashboard() : navigate('/login'); }}>
+          {isLoggedIn ? 'Dashboard' : 'Login'}</a></li>
         {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
       </ul>
     </nav>
