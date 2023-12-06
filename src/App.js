@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
@@ -12,6 +12,24 @@ import Navbar from './pages/components/Navbar';
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const checkUserSession = async () => {
+      const response = await fetch('http://localhost:3001/api/check-session', {
+        method: 'GET',
+        credentials: 'include',
+      });
+  
+      const data = await response.json();
+  
+      if (data.loggedIn) {
+        setLoggedIn(true);
+        setUserRole(data.user.isAdmin === 1 ? 'admin' : 'user');
+      }
+    };
+  
+    checkUserSession();
+  }, []);
 
   return (
     <Router>
