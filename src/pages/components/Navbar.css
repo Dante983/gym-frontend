@@ -1,0 +1,24 @@
+/* Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+  }
+  
+  .navbar li {
+    margin: 0 10px;
+  }
+  
+  .navbar a, .navbar .logout-button {
+    color: rgb(255, 255, 255);
+    /* text-decoration: underline; */
+    cursor: pointer;
+  }

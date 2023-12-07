@@ -1,0 +1,43 @@
+.dashboard {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.dashboard h2 {
+  text-align: center;
+  color: #333;
+}
+
+.dashboard-content {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dashboard .metric {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 25%;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard .metric h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.dashboard .metric p {
+  margin: 5px 0 0;
+  color: #666;
+  font-size: 1.5em;
+  font-weight: bold;
+}

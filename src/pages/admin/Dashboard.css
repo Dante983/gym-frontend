@@ -1,0 +1,34 @@
+/* AdminDashboard.css */
+.admin-dashboard {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .admin-dashboard h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .admin-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-dashboard th,
+  .admin-dashboard td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .admin-dashboard tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .admin-dashboard th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
