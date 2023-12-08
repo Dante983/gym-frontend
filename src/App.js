@@ -1,6 +1,7 @@
 // App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ThemeToggle from './pages/components/ThemeToggle';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
@@ -8,6 +9,10 @@ import Login from './pages/login/Login';
 import UserDashboard from './pages/user/Dashboard';
 import AdminDashboard from './pages/admin/Dashboard';
 import Navbar from './pages/components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -35,6 +40,7 @@ function App() {
     <Router>
       <div>
         <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} userRole={userRole} />
+        <ThemeToggle />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
