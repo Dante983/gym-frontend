@@ -12,8 +12,8 @@ const Dashboard = () => {
       });
 
       const data = await response.json();
-
-      if (response.ok) {
+console.log(data.users);
+      if (response.ok && data.users) {
         setUsers(data.users);
       } else {
         alert('Failed to fetch users');
@@ -23,31 +23,29 @@ const Dashboard = () => {
     fetchUsers();
   }, []);
 
-  const AdminDashboard = () => {
-    return (
-      <div className="admin-dashboard">
-        <h2>Admin Dashboard</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Gym Progress</th>
+  return (
+    <div className="admin-dashboard">
+      <h2>Admin Dashboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gym Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users && users.map((user) => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.username}</td>
+              <td>{user.progress}</td>
             </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.progress}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
-  };
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
 export default Dashboard;
