@@ -6,8 +6,21 @@ const Navbar = ({ isLoggedIn, setLoggedIn, userRole }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setLoggedIn(false);
-    navigate('/login');
+    fetch('http://localhost:3001/api/logout', {
+      method: 'POST',
+      credentials: 'include', // This is required to include the session cookie in the request
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Logout successful') {
+        // Update the isLoggedIn state to false after successfully logging out
+        setLoggedIn(false);
+        // Redirect to the login page
+        navigate('/login');
+      } else {
+        alert('Failed to log out');
+      }
+    });
   };
 
   const handleDashboard = () => {
